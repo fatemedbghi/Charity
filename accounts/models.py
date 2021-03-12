@@ -3,8 +3,8 @@ from django.db import models
 
 class User(AbstractUser):
     GENDER = (
-        ("M", "male"),
-        ("F", "female"),
+        ("M", "Male"),
+        ("F", "Female"),
     )
     address = models.TextField(blank=True, null=True)
     age = models.PositiveSmallIntegerField(blank=True, null=True)

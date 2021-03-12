@@ -29,8 +29,8 @@ class Task(models.Model):
         ("D", "Done"),
     )
     GENDER = (
-        ("M", "male"),
-        ("F", "female"),
+        ("M", "Male"),
+        ("F", "Female"),
     )
     assigned_benefactor = models.ForeignKey(Benefactor, on_delete=models.SET_NULL, null=True)
     charity = models.ForeignKey(Charity, on_delete=models.DO_NOTHING)
