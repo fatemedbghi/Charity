@@ -11,3 +11,4 @@ class User(AbstractUser):
     description = models.TextField(blank=True, null=True)
     gender = models.CharField(max_length=1, choices=GENDER, blank=True, null=True)
     phone = models.CharField(max_length=15, blank=True, null=True)
+

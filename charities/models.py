@@ -41,3 +41,4 @@ class Task(models.Model):
     gender_limit = models.CharField(max_length=1, choices=GENDER, blank=True, null=True)
     state = models.CharField(max_length=1, choices=STATE)
     title = models.CharField(max_length=100)
+

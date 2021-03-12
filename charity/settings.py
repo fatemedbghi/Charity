@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts',
     'charities',
-    'django_truncate',
 ]
 
 MIDDLEWARE = [
