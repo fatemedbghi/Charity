@@ -1,4 +1,5 @@
 from django.db import models
+from accounts.models import User
 
 class Benefactor(models.Model):
     LOW = 0
@@ -9,13 +10,13 @@ class Benefactor(models.Model):
         (NORMAL, 'Normal'),
         (HIGH, 'High'),
     )
-    user = models.OneToOneField('self', on_delete=models.DO_NOTHING)
+    user = models.OneToOneField(User, on_delete=models.DO_NOTHING)
     experience = models.SmallIntegerField(choices=EXPERIENCE, default=0)
     free_time_per_week = models.PositiveSmallIntegerField(default=0)
 
 
 class Charity(models.Model):
-    user = models.OneToOneField('self', on_delete=models.DO_NOTHING)
+    user = models.OneToOneField(User, on_delete=models.DO_NOTHING)
     name =  models.CharField(max_length=50)
     reg_number = models.CharField(max_length=10)
 
