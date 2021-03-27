@@ -1,5 +1,6 @@
 from django.db import models
 from accounts.models import User
+from django.db.models import Q
 
 class Benefactor(models.Model):
     LOW = 0
@@ -22,13 +23,13 @@ class Charity(models.Model):
 
 class TaskManager(models.Manager):
     def related_tasks_to_charity(self, user):
-        pass
+        return self.filter(charity__user = user)
 
     def related_tasks_to_benefactor(self, user):
-        pass
+        return self.filter(assigned_benefactor__user = user)
 
     def all_related_tasks_to_user(self, user):
-        pass
+        return self.filter(Q(assigned_benefactor__user=user) | Q(charity__user=user) | Q(state = "P"))
 
 class Task(models.Model):
     STATE = (
@@ -50,4 +51,5 @@ class Task(models.Model):
     gender_limit = models.CharField(max_length=1, choices=GENDER, blank=True, null=True)
     state = models.CharField(max_length=1, choices=STATE)
     title = models.CharField(max_length=100)
+    objects = TaskManager()
 
